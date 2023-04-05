@@ -29,7 +29,6 @@ class TestGoinventoryadress():
     self.driver.find_element(By.CSS_SELECTOR, "*[data-test=\"password\"]").send_keys("secret_sauce")
     WebDriverWait(self.driver, 2).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, "*[data-test=\"login-button\"]")))
     self.driver.find_element(By.CSS_SELECTOR, "*[data-test=\"login-button\"]").click()
-    assert self.driver.find_element(By.CSS_SELECTOR, ".title").text == "Products"
-    elements = self.driver.find_elements(By.CSS_SELECTOR, "#inventory_container #inventory_container")
-    assert len(elements) > 0
+    self.vars["url"] = self.driver.execute_script("return window.location.href")
+    assert(self.vars["url"] == "https://www.saucedemo.com/inventory.html")
   
